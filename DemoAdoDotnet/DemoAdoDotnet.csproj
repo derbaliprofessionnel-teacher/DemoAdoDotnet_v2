@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UserSecretsId>0a2bd716-33d2-4cdb-9587-7005b3867990</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="appsettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.14" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+		<PackageReference Include="MySqlConnector" Version="2.6.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Sql\" />
+	</ItemGroup>
+
+</Project>
