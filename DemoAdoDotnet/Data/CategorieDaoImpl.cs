@@ -9,7 +9,7 @@ namespace DemoAdoDotnet.Data
 {
     internal class CategorieDaoImpl : ICategorieDao
     {
-        public DbContext DbContext { get; set; }    
+        public DbContext DbContext { get; set; }
 
         public CategorieDaoImpl(IConfiguration configuration)
         {
@@ -19,7 +19,7 @@ namespace DemoAdoDotnet.Data
         public List<Categorie> GetAllCategories()
         {
             //1. initialiser une liste des catégories vide
-            List<Categorie>  categories = new List<Categorie>();
+            List<Categorie> categories = new List<Categorie>();
             try
             {
                 //2. initialisier une chaine de connexion
@@ -32,7 +32,7 @@ namespace DemoAdoDotnet.Data
                 MySqlCommand command = new MySqlCommand(sql, connection);
 
                 //4. ouvrir la connexion
-                connection.Open();  
+                connection.Open();
 
                 //5. Exécuter la commande SELECT
                 MySqlDataReader reader = command.ExecuteReader(); //reader est le résultat sous forme d'un tableau
@@ -52,7 +52,8 @@ namespace DemoAdoDotnet.Data
                 connection.Close();
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Console.WriteLine(ex.ToString());
             }
 
@@ -64,9 +65,30 @@ namespace DemoAdoDotnet.Data
             throw new NotImplementedException();
         }
 
-        public void AddCategorie(Categorie categorie)
+        public void AddCategorie(string nom)
         {
-            throw new NotImplementedException();
+            try
+            {
+                //1. initialisier une chaine de connexion
+                MySqlConnection connection = new MySqlConnection(DbContext.ConnectionString);
+                //2. créer une commande SQL
+                string sql = "INSERT INTO categorie (nom) VALUES (" + nom + ");"; // INSERT => écriture : utiliser ExecuteNonQuery()
+
+                MySqlCommand command = new MySqlCommand(sql, connection);
+
+                //3. ouvrir la connexion
+                connection.Open();
+
+                //4. Exécuter la commande INSERT
+                command.ExecuteNonQuery();
+
+                //5. fermer la connexion
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

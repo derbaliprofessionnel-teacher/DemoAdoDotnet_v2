@@ -10,7 +10,7 @@ namespace DemoAdoDotnet.Data
     {
         List<Categorie> GetAllCategories(); // trouve toutes les catégories de la DB
         Categorie? GetCategorieById(int id); // trouve une catégorie identifiée par son id dans DB
-        void AddCategorie(Categorie categorie); // ajouter une nouvelle catégorie dans DB
+        void AddCategorie(string nom); // ajouter une nouvelle catégorie dans DB
         
         //on peut enrichir le Dao par d'autres méthodes
 
